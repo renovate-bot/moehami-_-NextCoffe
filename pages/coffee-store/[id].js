@@ -42,6 +42,8 @@ export default function CoffeeStore(initialProps) {
   const router = useRouter();
 
 
+
+
   const id = router.query.id
   const [coffeeStore, setCoffeeStore] = useState(initialProps.coffeeStore)
   const {
@@ -61,17 +63,18 @@ if(isEmpty(initialProps.coffeeStore)) {
 }
 }, [])
 
-
+if (router.isFallback) {
+  return <div>Loading...</div>;
+}
 
   const { name, location, imgUrl } = coffeeStore;
 
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  };
+
   const handleUpvoteButton = () => {
     console.log('kkdk');
   };
+ 
   return (
     <div className={styles.layout}>
       <Head>
